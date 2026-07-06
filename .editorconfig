@@ -9,10 +9,14 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [*.md]
+indent_size = 2
 trim_trailing_whitespace = false
 
-[*.{yml,yaml}]
+[*.{blade.php,ts,tsx,js,jsx,css,html,json,xml,yml,yaml,config}]
 indent_size = 2
 
 [{compose,docker-compose}.{yml,yaml}]
+indent_size = 2
+
+[{composer.json,package.json,pint.json,lang/*.json}]
 indent_size = 4
