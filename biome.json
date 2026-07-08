@@ -1,0 +1,40 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "files": {
+    "includes": ["**", "!resources/js/actions", "!resources/js/routes", "!resources/js/wayfinder"]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 140,
+    "lineEnding": "lf"
+  },
+  "css": {
+    "formatter": { "enabled": true },
+    "linter": { "enabled": true },
+    "parser": { "tailwindDirectives": true }
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["composer.json", "package.json", "pint.json", "lang/**/*.json"],
+      "formatter": {
+        "indentWidth": 4
+      }
+    }
+  ]
+}
