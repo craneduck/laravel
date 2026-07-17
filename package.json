@@ -5,8 +5,8 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "format:check": "biome format resources/",
-        "format": "biome format resources/ --write",
+        "format:check": "biome format resources/ ; prettier resources/**/*.blade.php --check",
+        "format": "biome format resources/ --write ; prettier resources/**/*.blade.php --write",
         "lint": "biome lint ./resources",
         "types": "tsc --noEmit"
     },
@@ -15,6 +15,9 @@
         "@tailwindcss/vite": "^4.0.0",
         "concurrently": "^10.0.3",
         "laravel-vite-plugin": "^3.1",
+        "prettier": "3.9.5",
+        "prettier-plugin-blade": "^3.0.0",
+        "prettier-plugin-tailwindcss": "^0.8.0",
         "tailwindcss": "^4.0.0",
         "typescript": "^6.0.0",
         "vite": "^8.0.0"
