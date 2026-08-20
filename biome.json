@@ -85,6 +85,7 @@
     {
       "includes": [
         "composer.json",
+        "package.json",
         "pint.json",
         "lang/**/*.json"
       ],
