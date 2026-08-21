@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\NullHandler;
+use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Monolog\Processor\WebProcessor;
 
 return [
 
@@ -53,6 +56,31 @@ return [
     */
 
     'channels' => [
+
+        'app' => [
+            'driver' => 'monolog',
+            'handler' => RotatingFileHandler::class,
+            'with' => [
+                'filename' => storage_path('logs/app.log'),
+                'maxFiles' => env('LOG_DAILY_DAYS', 365),
+                'level' => env('LOG_LEVEL', 'debug'),
+            ],
+            'formatter' => JsonFormatter::class,
+            'processors' => [
+                [
+                    'processor' => WebProcessor::class,
+                    'with' => [
+                        'url' => 'REQUEST_URI',
+                        'ip' => 'REMOTE_ADDR',
+                        'port' => 'REMOTE_PORT',
+                        'method' => 'REQUEST_METHOD',
+                        'server' => 'SERVER_NAME',
+                        'referrer' => 'HTTP_REFERER',
+                        'ua' => 'HTTP_USER_AGENT',
+                    ],
+                ],
+            ],
+        ],
 
         'stack' => [
             'driver' => 'stack',

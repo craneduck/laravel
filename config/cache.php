@@ -6,6 +6,11 @@ use Illuminate\Support\Str;
 
 return [
 
+    'model_cache' => [
+        'stale_while_revalidate' => env('MODEL_CACHE_STABLE_WHILE_REVALIDATE', 300),
+        'max_age' => env('MODEL_CACHE_MAX_AGE', 900),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Default Cache Store
