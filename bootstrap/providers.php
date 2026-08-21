@@ -6,4 +6,5 @@ use App\Providers\AppServiceProvider;
 
 return [
     AppServiceProvider::class,
+    TypeScriptTransformerServiceProvider::class,
 ];
